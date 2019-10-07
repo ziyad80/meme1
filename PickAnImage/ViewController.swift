@@ -80,26 +80,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
 
    // Pick an Image from Photo Library
     
-    @IBAction func pickAnImage(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
+    func openImagePicker(type: UIImagePickerController.SourceType){
+       
+        if UIImagePickerController.isSourceTypeAvailable(type){
+            
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.allowsEditing = true
+            pickerController.sourceType = type
+            present(pickerController, animated: true, completion: nil)
+        }
+       
     }
+    
+    @IBAction func pickAnImage(_ sender: Any) {
+        openImagePicker(type: .photoLibrary)
+        
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+//        let pickerController = UIImagePickerController()
+//        pickerController.delegate = self
+//        pickerController.allowsEditing = true
+//        pickerController.sourceType = .photoLibrary
+//        present(pickerController, animated: true, completion: nil)
+//    }
     }
     
     // Take an Image from the camera
     @IBAction func takeAnImage(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        pickerController.sourceType = .camera
-     
-        present(pickerController, animated: true, completion: nil)
-    }
+       
+        openImagePicker(type: .camera)
+        
+        
+ 
+//        let pickerController = UIImagePickerController()
+//        pickerController.delegate = self
+//        pickerController.allowsEditing = true
+//        pickerController.sourceType = .camera
+//
+//        present(pickerController, animated: true, completion: nil)
+//    }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -170,11 +189,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
     @IBAction func share(_ sender: Any) {
 
         let activityViewControlle = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
+        activityViewControlle.completionWithItemsHandler = {(activity, completed, items, error) in
+            if (completed){
+                self.save()
+            }
+            
+            //Dismiss the shareActivityViewController
+            self.dismiss(animated: true, completion: nil)
+        }
         present(activityViewControlle, animated: true, completion: nil)
 
     }
     @IBAction func cancelion(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        imagePickerView.image = nil
+        
 
     }
     
