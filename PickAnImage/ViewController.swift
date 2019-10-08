@@ -82,34 +82,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
     
     func openImagePicker(type: UIImagePickerController.SourceType){
        
-        if UIImagePickerController.isSourceTypeAvailable(type){
+        
             
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
             pickerController.allowsEditing = true
             pickerController.sourceType = type
             present(pickerController, animated: true, completion: nil)
-        }
+        
        
     }
     
     @IBAction func pickAnImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
         openImagePicker(type: .photoLibrary)
-        
-//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+        }
+//
 //        let pickerController = UIImagePickerController()
 //        pickerController.delegate = self
 //        pickerController.allowsEditing = true
 //        pickerController.sourceType = .photoLibrary
 //        present(pickerController, animated: true, completion: nil)
-//    }
+//
     }
     
     // Take an Image from the camera
     @IBAction func takeAnImage(_ sender: Any) {
        
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
         openImagePicker(type: .camera)
-        
+        }
         
  
 //        let pickerController = UIImagePickerController()
@@ -118,7 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
 //        pickerController.sourceType = .camera
 //
 //        present(pickerController, animated: true, completion: nil)
-//    }
+//
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
