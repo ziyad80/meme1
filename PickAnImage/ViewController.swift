@@ -41,6 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var camera: UIBarButtonItem!
     
     func configureTextField(textField: UITextField, defaultText: String)
     {
@@ -65,6 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         
         // Do any additional setup after loading the view.
         self.shareButton.isEnabled = false
+        self.camera.isEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -110,6 +112,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
     @IBAction func takeAnImage(_ sender: Any) {
        
         if UIImagePickerController.isSourceTypeAvailable(.camera){
+            self.camera.isEnabled = true
+            
         openImagePicker(type: .camera)
         }
         
@@ -131,9 +135,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         }
         dismiss(animated: true, completion: nil)
         self.shareButton.isEnabled = true
-
     }
-   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     func subscribeToKeyboardNotifications() {
@@ -199,8 +205,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
             //Dismiss the shareActivityViewController
             self.dismiss(animated: true, completion: nil)
         }
-        present(activityViewControlle, animated: true, completion: nil)
-
     }
     @IBAction func cancelion(_ sender: Any) {
         imagePickerView.image = nil
