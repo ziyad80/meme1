@@ -11,15 +11,18 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFieldDelegate, UINavigationControllerDelegate {
     
-    struct Meme {
-        var topText : String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage : UIImage
-        
-    }
+//    struct Meme {
+//        var topText : String
+//        var bottomText: String
+//        var originalImage: UIImage
+//        var memedImage : UIImage
+//
+//    }
     func save (){
-        _ = Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
         
     }
     
@@ -99,13 +102,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
         openImagePicker(type: .photoLibrary)
         }
-//
-//        let pickerController = UIImagePickerController()
-//        pickerController.delegate = self
-//        pickerController.allowsEditing = true
-//        pickerController.sourceType = .photoLibrary
-//        present(pickerController, animated: true, completion: nil)
-//
+
     }
     
     // Take an Image from the camera
@@ -117,14 +114,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         openImagePicker(type: .camera)
         }
         
- 
-//        let pickerController = UIImagePickerController()
-//        pickerController.delegate = self
-//        pickerController.allowsEditing = true
-//        pickerController.sourceType = .camera
-//
-//        present(pickerController, animated: true, completion: nil)
-//
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -196,9 +185,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
     
     @IBAction func share(_ sender: Any) {
 
+        print("share bottom press")
         let activityViewControlle = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
+        self.present(activityViewControlle, animated: true, completion: nil)
         activityViewControlle.completionWithItemsHandler = {(activity, completed, items, error) in
             if (completed){
+              
                 self.save()
             }
             
@@ -207,7 +199,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         }
     }
     @IBAction func cancelion(_ sender: Any) {
-        imagePickerView.image = nil
+        dismiss(animated: true, completion: nil)
         
 
     }

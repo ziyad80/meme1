@@ -8,10 +8,10 @@
 
 import Foundation
 import UIKit
+
+
 class SentMemesCollectionViewController: UICollectionViewController{
-    @IBOutlet weak var collectionImage: UIImageView!
     
-   
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     var memes: [Meme]!{
     let object = UIApplication.shared.delegate
@@ -32,9 +32,11 @@ class SentMemesCollectionViewController: UICollectionViewController{
         return self.memes.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemesCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        
         let meme = memes[indexPath.row]
-        cell
+        cell.memeImageView.image = meme.memedImage
+        return cell
     }
         
     
@@ -42,11 +44,12 @@ class SentMemesCollectionViewController: UICollectionViewController{
         super.viewDidLoad()
         let space:CGFloat = 3.0
         let widthDimension = (view.frame.size.width - (2 * space)) / 3.0
-        let heightDimension = (view.frame.size.width - (2 * space)) / 3.0
+        let heightDimension = (view.frame.size.height - (2 * space)) / 3.0
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: widthDimension, height: heightDimension)
-    
+        
+       
 }
 }
