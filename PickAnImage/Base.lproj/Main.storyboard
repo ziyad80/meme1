@@ -143,6 +143,37 @@
             </objects>
             <point key="canvasLocation" x="81.159420289855078" y="-482.14285714285711"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="bzu-SE-dgQ">
+            <objects>
+                <viewController id="ScE-6i-fBP" customClass="MemeDetailViewController" customModule="PickAnImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LoY-Vd-Bc5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-Mo-CpD">
+                                <rect key="frame" x="57" y="198" width="300" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5re-gB-1gS"/>
+                                    <constraint firstAttribute="height" constant="500" id="7wO-jP-SO6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="centerY" secondItem="LoY-Vd-Bc5" secondAttribute="centerY" id="6UA-EV-caY"/>
+                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="centerX" secondItem="LoY-Vd-Bc5" secondAttribute="centerX" id="8tH-Bt-byb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7ui-1x-DaE"/>
+                    </view>
+                    <connections>
+                        <outlet property="memeDetailImage" destination="6uW-Mo-CpD" id="iya-Cg-iQT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbU-6q-rk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="-889"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

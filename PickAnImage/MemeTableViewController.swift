@@ -37,6 +37,17 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
      
         return cell
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
+        let vc = MemeDetailViewController()
+        vc.memeDetailImage?.image = memes[indexPath.row].memedImage
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

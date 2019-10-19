@@ -24,6 +24,7 @@ class SentMemesCollectionViewController: UICollectionViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        collectionView.reloadData()
     }
     
     // MARK: Collection View Data Source
@@ -38,6 +39,7 @@ class SentMemesCollectionViewController: UICollectionViewController{
         cell.memeImageView.image = meme.memedImage
         return cell
     }
+  
         
     
     override func viewDidLoad() {
@@ -52,4 +54,9 @@ class SentMemesCollectionViewController: UICollectionViewController{
         
        
 }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         let vc = MemeDetailViewController()
+        vc.memeDetailImage?.image = memes[indexPath.row].memedImage
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
