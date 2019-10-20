@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="-1658" y="-223"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="Hsf-JV-Zzb">
             <objects>
                 <navigationController id="V19-8w-rib" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3Az-H4-1BM"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection_30x30" id="3Az-H4-1BM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vS6-sI-LfI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,11 +45,11 @@
             </objects>
             <point key="canvasLocation" x="-885" y="215"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="ePe-IX-J4H">
             <objects>
                 <navigationController id="NG8-am-L1o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rnZ-zq-3id"/>
+                    <tabBarItem key="tabBarItem" title="" image="table_30x30" id="rnZ-zq-3id"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EhD-Fs-KZD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -146,23 +146,21 @@
         <!--Meme Detail View Controller-->
         <scene sceneID="bzu-SE-dgQ">
             <objects>
-                <viewController id="ScE-6i-fBP" customClass="MemeDetailViewController" customModule="PickAnImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="ScE-6i-fBP" customClass="MemeDetailViewController" customModule="PickAnImage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LoY-Vd-Bc5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-Mo-CpD">
-                                <rect key="frame" x="57" y="198" width="300" height="500"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="5re-gB-1gS"/>
-                                    <constraint firstAttribute="height" constant="500" id="7wO-jP-SO6"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-Mo-CpD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="centerY" secondItem="LoY-Vd-Bc5" secondAttribute="centerY" id="6UA-EV-caY"/>
-                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="centerX" secondItem="LoY-Vd-Bc5" secondAttribute="centerX" id="8tH-Bt-byb"/>
+                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="top" secondItem="LoY-Vd-Bc5" secondAttribute="top" constant="44" id="R8S-aZ-Lw7"/>
+                            <constraint firstAttribute="trailing" secondItem="6uW-Mo-CpD" secondAttribute="trailing" id="RTx-uB-zUQ"/>
+                            <constraint firstItem="6uW-Mo-CpD" firstAttribute="leading" secondItem="LoY-Vd-Bc5" secondAttribute="leading" id="d1i-hX-4v7"/>
+                            <constraint firstAttribute="bottom" secondItem="6uW-Mo-CpD" secondAttribute="bottom" constant="34" id="gXS-X2-lfD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7ui-1x-DaE"/>
                     </view>
@@ -174,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="945" y="-889"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PickAnImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="PickAnImage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -339,7 +337,11 @@
             <point key="canvasLocation" x="124.6376811594203" y="348.88392857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dd0-aW-b1j"/>
+        <segue reference="mTx-JP-5fn"/>
     </inferredMetricsTieBreakers>
 </document>

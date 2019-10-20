@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  PickAnImage
 //
 //  Created by Ziyad Alsaeed on 9/24/19.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFieldDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate,UITextFieldDelegate, UINavigationControllerDelegate {
     
 //    struct Meme {
 //        var topText : String
@@ -54,8 +54,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UITextFi
         
         textField.textAlignment = NSTextAlignment.center
         
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        textField.text = defaultText
     }
     
    

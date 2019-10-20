@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ziyad Alsaeed. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 struct Meme {
